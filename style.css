@@ -1,0 +1,118 @@
+
+*,html{
+	height:100%;
+	width:100%;
+}
+
+.title{
+	margin-top:7%;
+	font-size: x-large;
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+	display: block;
+	height:10%;
+}
+
+.outerouterbox{
+	width: 100%;
+	position:relative;
+	display:block;
+}
+.outerbox{
+	width: 100%;
+	background-size: cover;
+	position:absolute;
+	float:left;
+}
+
+#message{
+	font-family: 'Indie Flower', cursive;
+	text-align: center;
+	height:10%;
+	display:block;
+}
+
+
+.messagebox{
+	height: 5%
+}
+
+.starholder{
+	height:10%;
+	width:100%;
+	text-align: center;
+	padding-bottom: 3%;
+}
+
+.star{
+	background-image:url("http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/magic-marker-icons-natural-wonders/115671-magic-marker-icon-natural-wonders-star6-ps.png");
+	width:75px;
+	height:75px;
+	background-size:cover; 
+	display:inline-block;
+}
+
+.numberbox{
+	height:12%;
+	text-align: center;
+	vertical-align: middle
+}
+
+.num{
+	height:75px;
+	width:75px;
+	border-radius:50%;
+	font-family: 'Indie Flower',cursive;
+	font-size: 300%;
+	border: 2px black solid;
+	display: inline-table;
+	cursor: pointer;
+}
+
+.controls-outerbox{
+	padding-top: 5%;
+	text-align: center;
+	height: 30%;
+	position: block;
+}	
+
+.controls-innerbox{
+	text-align: middle;
+}
+
+.restart, .submit, .reroll{
+	height:50px;
+	width:110px;
+	font-family: 'Indie Flower',cursive;
+	font-size: xx-large;
+	border: 2px black solid;
+	display: inline-table;
+	margin: 1%;
+	border-radius:8%;
+	cursor: pointer;
+}
+
+.restart:hover, .submit:hover, .reroll:hover{
+color:#3366ff;
+border-color: #3366ff;
+cursor: pointer;
+}
+
+.restart:active, .submit:active, .reroll:active{
+color:red;
+border-color: red;
+cursor: pointer;
+}
+
+
+.selected{
+	color:#ff0066;
+	border-color: #ff0066;
+	font-weight: bold;
+}
+
+.disabled{
+	color:#eeeeee;
+	border-color: #eeeeee;
+	cursor: none;
+}
