@@ -58,9 +58,11 @@ function numClick(event){
 }
 
 function rerollHandler(){
+			genStars();
+
 	if(turns > 1){
 		turns--;
-		genStars();
+					loseDetection();
 		if(turns===0){
 			$status.text("No rerolls left... you can do it..");
 		}
