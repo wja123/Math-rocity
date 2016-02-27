@@ -62,20 +62,24 @@ function rerollHandler(){
 
 	if(turns > 1){
 		turns--;
-					loseDetection();
+		loseDetection();
 		if(turns===0){
 			$status.text("No rerolls left... you can do it..");
+			loseDetection();
 		}
 		else if(turns===1){
 			$status.text("Just one more reroll left, you can do it..");
+			loseDetection();
 		}
 		else{
 			$status.text("Just " + turns + " rerolls left, you can do it..");
+			loseDetection();
 		}
 
 	}
 	else 
 	{
+
 		$status.text("No rerolls left... how about a new game?");
 		gameLive = false;
 	}
