@@ -32,11 +32,12 @@ function init(){
 	$restart.click(restartHandler);
 	$submit.click(submitHandler);
 
-	console.log($('.num').not(".diabled"));
+
 }
 
 function numClick(event){
 	var num = event.target;
+
 	if(gameLive === true){
 		if(!$(num).hasClass("disabled")){
 			if($(num).hasClass("selected")){
@@ -92,38 +93,65 @@ function submitHandler(event) {
 
 	if(gameLive === true){
 
-if(parseInt($(".disabled").length)===9){
-				console.log("submit : " + (parseInt($(".disabled").length)===9));
-				$status.text("Wow!! You beat the game! How about another round?");
-				gameLive=false;
-			} else{
+		if(parseInt($(".disabled").length)===9){
+			console.log("submit : " + (parseInt($(".disabled").length)===9));
+			$status.text("Wow!! You beat the game! How about another round?");
+			gameLive=false;
+		} else{
 
 
 
-		if(selectTotal === numStars){
-			
+			if(selectTotal === numStars){
+
 				$status.text("Great work! Now lets try it without those numbers ☺");
 				$(".selected").addClass("disabled").removeClass("selected");
 				selectTotal=0;
 				genStars();
-		}
-		else
-		{
-			$status.text("Not quite, but please try again ☺");
+			}
+			else
+			{
+				$status.text("Not quite, but please try again ☺");
+			}
 		}
 	}
-}
 }
 
 function genStars(){
 	numStars = Math.floor(Math.random() * 9)+1;
+
 	$starHolder.empty();
 	for(var i = 1;i <= numStars; i++){
 		var $star = $("<div>").addClass("star");
 		$starHolder.append($star).addClass("animated bounceInLeft");
 	}
+	if(loseDetection()){
+		$status.text("Oh no! Looks like you'll have to reroll ☹");
+	}
+
+	
 }
 
 function loseDetection(){
+	var numArr = $(".num").not(".disabled");
+	var remNums = [];
+	for(var i = 0;i < numArr.length ; i++){
+		remNums.push(parseInt(numArr[i].textContent));
+	}
+
+	var retArr=[];
+
+	for(var i = 0; i<remNums.length; i++){
+		if(remNums[i]===numStars){
+			return false;
+		}
+		for (var j = i ; j <remNums.length; j++){
+			if((remNums[i]+remNums[j])===numStars){
+				return false;
+			}
+		}
+
+	}
+
+	return true;
 
 }
