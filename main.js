@@ -58,22 +58,21 @@ function numClick(event){
 }
 
 function rerollHandler(){
-			genStars();
-
+	if(gameLive){
+	genStars();
 	if(turns > 1){
 		turns--;
-		loseDetection();
-		if(turns===0){
+		if(turns === 0){
 			$status.text("No rerolls left... you can do it..");
-			loseDetection();
 		}
-		else if(turns===1){
+		else if(turns === 1){
 			$status.text("Just one more reroll left, you can do it..");
-			loseDetection();
 		}
 		else{
 			$status.text("Just " + turns + " rerolls left, you can do it..");
-			loseDetection();
+		}
+		if(loseDetection()){
+			$status.text("Oh no! Looks like you'll have to reroll ☹");
 		}
 
 	}
@@ -83,6 +82,7 @@ function rerollHandler(){
 		$status.text("No rerolls left... how about a new game?");
 		gameLive = false;
 	}
+}
 }
 
 function restartHandler(){
@@ -99,10 +99,11 @@ function submitHandler(event) {
 
 	if(gameLive === true){
 
-		if(parseInt($(".disabled").length)===9){
-			console.log("submit : " + (parseInt($(".disabled").length)===9));
+		if(parseInt($(".disabled").length) === 9){
+			console.log("submit : " + (parseInt($(".disabled").length) === 9));
 			$status.text("Wow!! You beat the game! How about another round?");
-			gameLive=false;
+			gameLive = false;
+			selectTotal = 0;
 		} else{
 
 
@@ -111,7 +112,7 @@ function submitHandler(event) {
 
 				$status.text("Great work! Now lets try it without those numbers ☺");
 				$(".selected").addClass("disabled").removeClass("selected");
-				selectTotal=0;
+				selectTotal = 0;
 				genStars();
 			}
 			else
@@ -123,6 +124,7 @@ function submitHandler(event) {
 }
 
 function genStars(){
+	selectTotal=0;
 	numStars = Math.floor(Math.random() * 9)+1;
 
 	$starHolder.empty();
@@ -130,9 +132,11 @@ function genStars(){
 		var $star = $("<div>").addClass("star");
 		$starHolder.append($star).addClass("animated bounceInLeft");
 	}
+
 	if(loseDetection()){
 		$status.text("Oh no! Looks like you'll have to reroll ☹");
 	}
+
 
 	
 }
@@ -143,6 +147,8 @@ function loseDetection(){
 	for(var i = 0;i < numArr.length ; i++){
 		remNums.push(parseInt(numArr[i].textContent));
 	}
+
+		console.log("numStars: " + numStars + " : LeftNums: " + remNums.join(","))
 
 	var retArr=[];
 
@@ -157,6 +163,8 @@ function loseDetection(){
 		}
 
 	}
+
+
 
 	return true;
 
