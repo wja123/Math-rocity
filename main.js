@@ -132,7 +132,7 @@ function genStars(){
 		var $star = $("<div>").addClass("star");
 		$starHolder.append($star).addClass("animated bounceInLeft");
 	}
-
+	console.log(loseDetection());
 	if(loseDetection()){
 		$status.text("Oh no! Looks like you'll have to reroll ☹");
 	}
