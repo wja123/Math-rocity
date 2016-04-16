@@ -156,7 +156,7 @@ function loseDetection(){
 		if(remNums[i]===numStars){
 			return false;
 		}
-		for (var j = i ; j <remNums.length; j++){
+		for (var j = i+1 ; j <remNums.length; j++){
 			if((remNums[i]+remNums[j])===numStars){
 				return false;
 			}
